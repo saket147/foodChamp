@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity
         EditText txtPlace=(EditText)findViewById(R.id.place);*/
 
         mydb = new DBHelper(this);
-        mydb.deleteTable();
+       //mydb.deleteTable();
 
 
         register.setOnClickListener(new View.OnClickListener()
@@ -86,9 +86,14 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 /*final String username=user.getText().toString();
                 final String password=txtPassword.getText().toString();*/
-                Cursor cursor;
+
+
                 String a;
                 ArrayList c = adapter.getAllCotacts();
+                Cursor cursor=adapter.getData(c.indexOf(adapter));
+                cursor.moveToFirst();
+
+
                 if(c.contains(user.getText().toString()))
                 {
                     Toast.makeText(getBaseContext(), "accepted", Toast.LENGTH_LONG).show();

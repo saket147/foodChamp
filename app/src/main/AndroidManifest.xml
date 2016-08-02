@@ -15,7 +15,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Add_restaurent"></activity>
+        <activity android:name=".Add_restaurent" />
+        <activity android:name=".Cuisine" />
+        <activity android:name=".Facility" />
+        <activity android:name=".PaymentOptions"></activity>
     </application>
 
 </manifest>

@@ -28,7 +28,7 @@ package com.example.saket.foodchamp;
 public static final String CONTACTS_COLUMN_NAME = "name";
 public static final String CONTACTS_COLUMN_PASSWORD = "password";
 public static final String CONTACTS_COLUMN_EMAIL = "email";
-public static final String CONTACTS_COLUMN_STREET = "street";
+public static final String CONTACTS_COLUMN_ADDRESS = "address";
 public static final String CONTACTS_COLUMN_CITY = "place";
 public static final String CONTACTS_COLUMN_PHONE = "phone";
 private String CONTACTS_COLUMN_CHK_VALUES = "checkbox_value";
@@ -50,7 +50,7 @@ public void onCreate(SQLiteDatabase db) {
         ""+CONTACTS_COLUMN_NAME+" text," +
         ""+CONTACTS_COLUMN_PHONE+" text," +
         ""+CONTACTS_COLUMN_EMAIL+" text," +
-        ""+CONTACTS_COLUMN_STREET+" text," +
+        ""+CONTACTS_COLUMN_ADDRESS+" text," +
         ""+CONTACTS_COLUMN_CITY+" text," +
         ""+CONTACTS_COLUMN_PASSWORD+" text" +
         "" +CONTACTS_COLUMN_CHK_VALUES+"TEXT_NOT_NULL" +
@@ -63,7 +63,7 @@ public void deleteTable(){
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_NAME);
         db.execSQL(
         "create table "+DATABASE_TABLE_NAME +
-        "("+CONTACTS_COLUMN_ID+" integer primary key,"+CONTACTS_COLUMN_NAME+" text,"+CONTACTS_COLUMN_PHONE+" text,"+CONTACTS_COLUMN_EMAIL+" text,"+CONTACTS_COLUMN_STREET+" text,"+CONTACTS_COLUMN_CITY+" text,"+CONTACTS_COLUMN_PASSWORD+" text)"
+        "("+CONTACTS_COLUMN_ID+" integer primary key,"+CONTACTS_COLUMN_NAME+" text,"+CONTACTS_COLUMN_PHONE+" text,"+CONTACTS_COLUMN_EMAIL+" text,"+CONTACTS_COLUMN_ADDRESS+" text,"+CONTACTS_COLUMN_CITY+" text,"+CONTACTS_COLUMN_PASSWORD+" text)"
         );
 
         }
@@ -88,6 +88,7 @@ public boolean insertDetails(String restaurent_name,String description,String br
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
+
         contentValues.put("restaurent_name",restaurent_name);
         contentValues.put("description",description);
         contentValues.put("branch",branch);
@@ -103,13 +104,14 @@ public Cursor getData(int id){
         return res;
         }
 
-public boolean updateContact (Integer id, String restaurent_name,String branch,String name, String phone, String email, String street,String place)
+public boolean updateContact (Integer id, String restaurent_name,String branch,String name, String password,String phone, String email, String street,String place)
         {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("restaurent_name",restaurent_name);
         contentValues.put("branch",branch);
         contentValues.put("name", name);
+        contentValues.put("password",password);
         contentValues.put("phone", phone);
         contentValues.put("email", email);
         contentValues.put("place", place);

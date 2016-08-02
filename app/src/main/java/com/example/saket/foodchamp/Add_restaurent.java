@@ -1,5 +1,7 @@
 package com.example.saket.foodchamp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,11 +19,13 @@ public class Add_restaurent extends AppCompatActivity
     TextView name,description,address,branch,email;
     EditText tname,tdescription,taddress,tbranch,temail;
     Button details;
+    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_restaurent);
+        context=getBaseContext();
         final DBHelper adapter=new DBHelper(getBaseContext());
         name=(TextView)findViewById(R.id.restaurentName);
         description=(TextView)findViewById(R.id.editDescription);
@@ -56,12 +60,15 @@ public class Add_restaurent extends AppCompatActivity
                 {
                     Log.d("Contacts lis ","Contacts List "+contactsList.get(i));
                 }
+                Intent intent=new Intent(getBaseContext(),Cuisine.class);
+                startActivity(intent);
                 name.setText(null);
                 description.setText(null);
                 branch.setText(null);
                 address.setText(null);
                 email.setText(null);
             }
+
         });
 
 

@@ -77,12 +77,18 @@
             android:id="@+id/editEmail"
             android:textSize="30dp"
             android:layout_below="@id/email"/>
+        <ToggleButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/restaurentStatus"
+            android:layout_below="@id/editEmail"
+            android:textSize="30dp"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnAdd"
-            android:layout_below="@id/editEmail"
+            android:layout_below="@id/restaurentStatus"
             android:text="Add"
             />
 
